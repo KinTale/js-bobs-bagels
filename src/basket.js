@@ -8,13 +8,10 @@ class Basket {
     constructor(capacity = smallBasket) {
         this.basket = []
         this.basketSize = capacity
-
     }
-
     getBasket() {
         return this.basket
     }
-
     addItem(itemName, itemQuantity) {
         const fullMenu = MENU.GetMenu()
         for (const items in fullMenu) {
@@ -25,47 +22,41 @@ class Basket {
                     price: fullMenu[items]
                 }
                 this.basket.push(insideBasket)
-                //console.log("inside basket", insideBasket)
             }
         }
     }
 
     removeItem(itemName) {
         for (let i = 0; i < this.basket.length; i++)
-            if (this.basket[i].item !== itemName) { return this.basket.splice(i, 1) }
-        // console.log("basket", removingItem)
-       // return removingItem
-
+            if (this.basket[i].item === itemName) {
+                this.basket.splice(i, 1)
+                return this.basket
+            }
+            else if (this.basket[i].item !== itemName)
+                return "This item is not in the basket."
     }
 
     basketCapacity() {
         const totalCapacity = this.basket.reduce((total, quantity) => { return total + quantity.quantity }, 0)
-        if (totalCapacity > this.basketSize) { return "Basket full, Please choose a bigger basket." }
-        //console.log("total",totalCapacity)
-
+        console.log("capacity", totalCapacity)
+        if (totalCapacity > this.basketSize) {
+            return "Basket full, Please choose a bigger basket."
+        }
     }
+
     priceChecker(itemName) {
-        //let inbasket = this.basket
         const fullMenu = MENU.GetMenu()
         for (const items in fullMenu)
-        if(itemName === items)
-        //console.log("price", items.price)
-        {return fullMenu[items]}
-    }
-
-    basketError(itemName) {
-        for (let i = 0; i < this.basket.length; i++)
-            if (this.basket[i].item !== itemName) return "This item is not in the basket."
+            if (itemName === items) { return fullMenu[items] }
     }
 
     basketTotal() {
         let eachItem = []
         for (let i = 0; i < this.basket.length; i++) { eachItem.push(this.basket[i].quantity * this.basket[i].price) }
         console.log("item", eachItem)
-        const totalPrice = eachItem.reduce((total, quantity) => { return total + quantity}, 0)
+        const totalPrice = eachItem.reduce((total, quantity) => { return total + quantity }, 0)
         console.log("total", totalPrice)
         return ("£" + totalPrice)
-
     }
 
 
