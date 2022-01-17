@@ -38,7 +38,6 @@ class Basket {
 
     basketCapacity() {
         const totalCapacity = this.basket.reduce((total, quantity) => { return total + quantity.quantity }, 0)
-        console.log("capacity", totalCapacity)
         if (totalCapacity > this.basketSize) {
             return "Basket full, Please choose a bigger basket."
         }
@@ -52,29 +51,13 @@ class Basket {
 
     basketTotal() {
         let eachItem = []
-        for (let i = 0; i < this.basket.length; i++) { eachItem.push(this.basket[i].quantity * this.basket[i].price) }
-        console.log("item", eachItem)
+        for (let i = 0; i < this.basket.length; i++) {
+            eachItem.push(this.basket[i].quantity * this.basket[i].price)
+        }
         const totalPrice = eachItem.reduce((total, quantity) => { return total + quantity }, 0)
-        console.log("total", totalPrice)
         return ("£" + totalPrice)
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-
 
 
 module.exports = Basket

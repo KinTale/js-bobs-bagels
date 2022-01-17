@@ -19,8 +19,8 @@ describe("Basket", () => {
     //Test 2
     it("Add items to basket", () => {
         const expected = [
-            {item: "bagel", quantity: 1, price: 2.99},
-            {item: "brownie", quantity: 3, price: 3.99}]
+            { item: "bagel", quantity: 1, price: 2.99 },
+            { item: "brownie", quantity: 3, price: 3.99 }]
 
         basket.addItem("bagel", 1)
         basket.addItem("brownie", 3)
@@ -31,7 +31,7 @@ describe("Basket", () => {
     //Test 3
     it("Remove bagel from basket", () => {
         const expected = this.basket = [
-            {item: "brownie", quantity: 3, price: 3.99}]
+            { item: "brownie", quantity: 3, price: 3.99 }]
 
         basket.addItem("bagel", 1)
         basket.addItem("brownie", 3)
@@ -42,8 +42,8 @@ describe("Basket", () => {
     //Test 4
     it("Alert when basket is full", () => {
         const expected =
-        
-        "Basket full, Please choose a bigger basket."
+
+            "Basket full, Please choose a bigger basket."
 
         basket.addItem("bagel", 3)
         basket.addItem("brownie", 5)
